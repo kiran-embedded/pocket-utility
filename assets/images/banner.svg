@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&amp;display=swap');
+      
+      .bg {
+        fill: transparent;
+      }
+      .text-title {
+        font-family: 'Fira Code', monospace;
+        font-size: 56px;
+        font-weight: 700;
+        fill: #b594fa;
+        stroke: #b594fa;
+        stroke-width: 1.5px;
+        stroke-dasharray: 500;
+        stroke-dashoffset: 500;
+        animation: draw 2s ease forwards, glow 3s ease-in-out infinite alternate 2s;
+      }
+      .text-sub {
+        font-family: 'Fira Code', monospace;
+        font-size: 18px;
+        fill: #9a7cdc;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards 1.5s;
+      }
+      .shape {
+        fill: none;
+        stroke: #c8b3fb;
+        stroke-width: 2;
+        opacity: 0.4;
+      }
+      .float-1 { animation: float 6s ease-in-out infinite; }
+      .float-2 { animation: float 8s ease-in-out infinite reverse; }
+      .float-3 { animation: float 7s ease-in-out infinite 1s; }
+      
+      .pulse-ring {
+        fill: none;
+        stroke: #b594fa;
+        stroke-width: 2;
+        opacity: 0;
+        animation: pulse 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      }
+
+      @keyframes draw {
+        to { stroke-dashoffset: 0; }
+      }
+      @keyframes glow {
+        from { text-shadow: 0 0 10px #b594fa33; }
+        to { text-shadow: 0 0 20px #b594fa88; }
+      }
+      @keyframes fadeIn {
+        to { opacity: 0.9; }
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(5deg); }
+      }
+      @keyframes pulse {
+        0% { r: 10; opacity: 0.8; }
+        100% { r: 60; opacity: 0; }
+      }
+    </style>
+  </defs>
+
+  <rect width="800" height="250" class="bg"/>
+
+  <!-- Decorative floating elements -->
+  <g class="float-1" transform="translate(100, 80)">
+    <polygon points="25,0 50,50 0,50" class="shape"/>
+  </g>
+  <g class="float-2" transform="translate(680, 50)">
+    <circle cx="20" cy="20" r="20" class="shape"/>
+  </g>
+  <g class="float-3" transform="translate(700, 160)">
+    <rect width="30" height="30" rx="5" class="shape"/>
+  </g>
+
+  <!-- Pulsing rings -->
+  <circle cx="125" cy="110" class="pulse-ring" style="animation-delay: 0s"/>
+  <circle cx="125" cy="110" class="pulse-ring" style="animation-delay: 1.5s"/>
+
+  <!-- Text -->
+  <text x="400" y="130" class="text-title" text-anchor="middle">Pocket Utility</text>
+  <text x="400" y="170" class="text-sub" text-anchor="middle">&lt; 40+ everyday tools in one lightweight app /&gt;</text>
+</svg>

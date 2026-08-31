@@ -1,66 +1,131 @@
+<div align="center">
+  <img src="assets/images/banner.svg" alt="Pocket Utility Header Animation" width="100%">
+</div>
+
 # Pocket Utility
 
-Pocket Utility is a comprehensive, all-in-one toolbox application built with Flutter. It consolidates over 40 everyday utilities and developer tools into a single, cohesive, and performant mobile experience.
+Hey everyone! I got tired of downloading a separate app every time I needed to scan a QR code, check my compass, format some JSON, or flip a coin. It felt like my phone was just a chaotic drawer of random single-purpose tools, half of which wanted weird permissions.
 
-## Features
+So, I built **Pocket Utility**—an all-in-one Flutter app that packs over 40 everyday tools and developer utilities into a single, clean interface. I focused heavily on making it fast, privacy-respecting (no sketchy trackers just to use a flashlight), and fully offline where possible.
 
-The application is modularized by feature, offering tools across several categories:
+---
 
-* **Calculators & Converters:** Standard Calculator, Currency Converter, Unit Converter, BMI Calculator, Discount Calculator, Age Calculator, Loan Calculator, Tip Calculator, Unit Price Calculator.
-* **Developer Tools:** JSON Formatter, Markdown Preview, Base64 Encoder/Decoder, Hash Generator, UUID Generator, URL Encoder/Decoder, Color Picker & Palette, ASCII/Binary/Hex Converters, Lorem Ipsum Generator.
-* **Hardware & Sensors:** Compass, GPS Info, Level, Sound Meter, Speedometer, Pedometer, Flashlight, Magnifier, Sensors Data, QR Scanner.
-* **Time & Productivity:** World Clock, Stopwatch, Timer, Pomodoro Timer, Alarm.
-* **Text & Utilities:** Clipboard Manager, Word Counter, Whitespace Remover, Text Repeater, Morse Code, TTS (Text-to-Speech), Password Generator, Dice Roller, Coin Flipper, Random Picker.
+## 🚧 Beta Features (Work in Progress)
 
-## Project Structure
+I'm actively tuning the sensor integrations. The following features are currently in **Beta** because they rely heavily on device-specific hardware calibration:
+- **Compass:** Works, but might require phone calibration (that weird figure-8 motion) on some devices.
+- **Altitude/Altimeter:** Still smoothing out the GPS vs Barometer data blending for accurate elevation.
+- **Sound Meter (Decibel):** Hardware microphones differ wildly from phone to phone, so the dB readings are relative right now, not absolute.
 
-The codebase is organized using a feature-first approach for scalability and maintainability.
+Feel free to open an issue if you notice weird readings on your specific phone model!
+
+---
+
+## 🛠️ What's Inside?
+
+I categorized the tools to keep the dashboard organized. Here's exactly what's baked in right now:
+
+### Hardware & Sensors
+- **Flashlight & Screen Light:** No ads, just light.
+- **GPS & Altitude (Beta):** Raw location data viewer.
+- **Compass (Beta):** Magnetic heading and orientation.
+- **Sound Meter (Beta):** Decibel tracking.
+- **Speedometer:** Uses GPS to track your speed.
+- **Pedometer:** Simple step counter.
+- **Level & Protractor:** For quick physical measurements.
+- **QR / Barcode Scanner:** Instant scanning and parsing.
+
+### Developer Utilities
+- **JSON Formatter:** Paste ugly JSON, get pretty JSON.
+- **Base64 Encoder/Decoder:** Quick conversions.
+- **Hash Generator:** MD5, SHA-1, SHA-256 right on your phone.
+- **URL Encoder/Decoder:** Handle web strings quickly.
+- **Color Picker & Palette:** Grab hex codes or explore palettes.
+- **ASCII, Binary, and Hex Converters:** Quick data translation.
+- **UUID Generator:** Need an ID? Boom.
+- **Lorem Ipsum Generator:** For mocking up text layouts.
+- **Markdown Preview:** Draft and preview markdown on the go.
+
+### Daily Calculators & Converters
+- **Standard Calculator:** The basics.
+- **Currency Converter:** Real-time exchange rates (needs connection to update).
+- **Unit Converter:** Length, weight, volume, etc.
+- **BMI Calculator:** Quick health check.
+- **Discount & Tip Calculators:** For shopping and dining out.
+- **Age Calculator:** Exact age down to the days.
+- **Loan Calculator:** Quick mortgage/loan estimates.
+- **Unit Price Calculator:** Find out which grocery item is actually cheaper per ounce.
+
+### Time & Productivity
+- **Pomodoro Timer:** Stay focused with standard work/break intervals.
+- **World Clock:** Track different timezones.
+- **Stopwatch & Timer:** Simple, precise time tracking.
+- **Alarm:** Basic local alarms.
+
+### Text & Randomizers
+- **Clipboard Manager:** Save snippets you use often.
+- **Word Counter & Whitespace Remover:** Quick text scrubbing.
+- **Text Repeater:** Repeat strings easily.
+- **Text-to-Speech (TTS):** Type it, hear it out loud.
+- **Morse Code:** Translate text to morse and vice versa.
+- **Password Generator:** Secure, customizable passwords.
+- **Dice Roller & Coin Flipper:** Resolve arguments quickly.
+- **Random Picker:** Input a list, let the app choose.
+
+---
+
+## 📂 Code Structure
+
+I tried to keep the codebase modular so it doesn't turn into a spaghetti monster. I'm using a feature-first approach. If you want to add a tool, you basically just drop it in the `features/tools` folder.
 
 ```text
 lib/
 ├── core/
-│   ├── providers/          # Global state management
-│   ├── theme/              # Theming and styling constants
+│   ├── providers/          # Global state (theme, currency, etc.)
+│   ├── theme/              # Colors, fonts, and dark mode logic
 │   └── utils/              # Shared helper functions
 ├── features/
-│   ├── dashboard/          # Main landing screen & tool grid
-│   ├── device_info/        # Device stats & app settings
-│   ├── emergency/          # Quick emergency utilities
-│   ├── onboarding/         # First-time setup & permissions
-│   ├── splash/             # Application initialization
-│   └── tools/              # Individual utility modules
+│   ├── dashboard/          # The main grid UI you see on launch
+│   ├── device_info/        # App settings and device hardware stats
+│   ├── emergency/          # Quick emergency shortcuts
+│   ├── onboarding/         # First-time permissions request
+│   ├── splash/             # Startup screen
+│   └── tools/              # Where the magic happens (each tool has its own folder)
 │       ├── age_calculator/
-│       ├── alarm/
-│       ├── base64/
-│       ├── calculator/
-│       ├── compass/
+│       ├── compass/        # (Beta code lives here)
 │       ├── qrcode_scanner/
-│       └── ... (40+ individual tools)
-└── main.dart               # Application entry point
+│       └── ... (and 40 more)
+└── main.dart               # The entry point
 ```
 
-## Getting Started
+---
 
-### Prerequisites
+## 🚀 Running it Locally
 
-* Flutter SDK (`^3.10.4` or higher)
-* Dart SDK
+If you want to poke around or build it yourself:
 
-### Installation
-
-1. Clone the repository:
+1. You'll need the Flutter SDK (I'm using `^3.10.4` or newer).
+2. Clone this repo:
    ```bash
    git clone https://github.com/kiran-embedded/pocket-utility.git
    ```
-2. Navigate to the project directory:
+3. Hop into the folder:
    ```bash
    cd pocket-utility
    ```
-3. Install dependencies:
+4. Grab the packages:
    ```bash
    flutter pub get
    ```
-4. Run the app:
+5. Run it on your emulator or plugged-in phone:
    ```bash
    flutter run
    ```
+
+## 🤝 Contributing
+
+Honestly, if you want to build a new tool and add it to the pile, I'd love that! Just follow the existing structure in `features/tools`, keep the UI consistent with the theme controller, and submit a PR. 
+
+If you find a bug (especially with the beta hardware sensors), please drop an issue so we can track it down.
+
+License is MIT. Have fun!
