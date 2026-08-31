@@ -4,7 +4,18 @@
 
 # Pocket Utility
 
+<div align="center">
+  <a href="https://github.com/kiran-embedded/pocket-utility/releases/latest">
+    <img src="https://img.shields.io/github/v/release/kiran-embedded/pocket-utility?style=for-the-badge&color=b594fa&label=Download%20APK" alt="Download APK" />
+  </a>
+  <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter" />
+  <img src="https://img.shields.io/github/license/kiran-embedded/pocket-utility?style=for-the-badge&color=b594fa" alt="License" />
+</div>
+
 Hey everyone! I got tired of downloading a separate app every time I needed to scan a QR code, check my compass, format some JSON, or flip a coin. It felt like my phone was just a chaotic drawer of random single-purpose tools, half of which wanted weird permissions.
+
+> **📥 Want to just use the app?**  
+> [**Download the latest APK here**](https://github.com/kiran-embedded/pocket-utility/releases/latest/download/app-release.apk) and install it directly on your Android device!
 
 So, I built **Pocket Utility**—an all-in-one Flutter app that packs over 40 everyday tools and developer utilities into a single, clean interface. I focused heavily on making it fast, privacy-respecting (no sketchy trackers just to use a flashlight), and fully offline where possible.
 
